@@ -1,0 +1,17 @@
+var a = undefined;
+document.write("Value after variable declaration is:");document.write(a);
+document.write("<br>");
+var b = 14;
+document.write("Initial Value:");document.write(b);
+document.write("<br>");
+var c = 15;
+document.write("Value after increament is:");document.write(c);
+document.write("<br>");
+var d = 22;
+document.write("Value after addition is:");document.write(d);
+document.write("<br>");
+var e = 21;
+document.write("Value after decreament is:");document.write(e);
+document.write("<br>");
+var f = 0;
+document.write("The reminder is:");document.write(f);
