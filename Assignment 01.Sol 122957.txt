@@ -1,0 +1,54 @@
+pragma solidity ^0.8.0;
+
+contract studentData{
+    
+    address payable private myAddress = payable(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4);
+    
+enum Gender{male, female}
+
+enum Class{online, onsite}
+
+struct student{
+    string name;
+    uint  age;
+    uint rollNumber;
+    bool BsDegree;
+    Gender gender;
+    Class class;
+    }
+    
+    mapping (uint => student) studentData;
+    
+    uint totalStudents;
+    
+    uint totalBalance;
+    
+     function enroll(string memory name, uint age, uint rollNumber, bool BsDegree, Gender gender, Class class) public payable{
+         
+         require(msg.value >= 2 ether);
+         
+    student memory std = student(name, age, rollNumber, BsDegree, gender, class);
+    
+    myAddress.transfer(msg.value);
+    
+    studentData[rollNumber] = std;
+    
+    totalStudents++;
+    
+    totalBalance += msg.value;
+    
+     }   
+     
+     function totalstudents() public view returns (uint){
+         return totalStudents;
+     }
+     
+     function fundsCollected() public view returns(uint){
+         return totalBalance;
+     }
+     
+     function hasDegree(uint  rollNumber) public view returns(bool){
+         return studentData[rollNumber].BsDegree;
+     }
+     
+}
